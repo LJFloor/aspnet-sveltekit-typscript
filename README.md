@@ -1,3 +1,9 @@
+## Installation
+Install the required node modules
+```shell
+npm install
+```
+
 ## Development
 Run both the aspnet app and the SvelteKit devserver:
 ```shell
