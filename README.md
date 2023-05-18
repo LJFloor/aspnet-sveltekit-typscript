@@ -1,38 +1,34 @@
-# create-svelte
-
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+## Development
+Run both the aspnet app and the SvelteKit devserver:
+```shell
+npm run dev   // http://localhost:5174
+```
+```shell
+dotnet run    // http://localhost:5153
 ```
 
-## Developing
+In SvelteKit, all requests that start with `/api` will be proxied to the aspnet app.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+Example:
+```
+http://localhost:5174/api/users/1 => http://localhost:5153/api/users/1
 ```
 
-## Building
-
-To create a production version of your app:
-
-```bash
+## Deployment
+Build the SvelteKit app. It is already configured to build to an SPA:
+```shell
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+Copy the contents of the `build` folder to the `wwwroot` folder. Then start the ASP.NET app.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+ASP.NET is configured to serve the SvelteKit app to requests that do NOT start with `/api`.
+
+## How does it work?
+
+You can use the following code in your SvelteKit app:
+```js
+fetch('/api/users/1');
+```
+
+During development SvelteKit will proxy this to the backend, and during production ASP.NET will handle this by itself.
