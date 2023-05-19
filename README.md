@@ -7,7 +7,7 @@ npm install
 ## Development
 Run both the aspnet app and the SvelteKit devserver:
 ```shell
-npm run dev   // http://localhost:5174
+npm run dev   // http://localhost:5173
 ```
 ```shell
 dotnet run    // http://localhost:5153
@@ -17,7 +17,7 @@ In SvelteKit, all requests that start with `/api` will be proxied to the aspnet 
 
 Example:
 ```
-http://localhost:5174/api/users/1 => http://localhost:5153/api/users/1
+http://localhost:5173/api/users/1 => http://localhost:5153/api/users/1
 ```
 
 ## Deployment
