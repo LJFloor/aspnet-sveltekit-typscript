@@ -13,6 +13,8 @@ npm run dev   // http://localhost:5173
 dotnet run    // http://localhost:5153
 ```
 
+Then access your app from the SvelteKit url, http://localhost:5173.
+
 In SvelteKit, all requests that start with `/api` will be proxied to the aspnet app.
 
 Example:
