@@ -1,2 +1,2 @@
-// Make sure this is set to false, so SvelteKit will act as a client side UI library.
+// Make sure Server Side Rendering is disabled
 export const ssr = false;
