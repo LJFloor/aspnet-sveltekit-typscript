@@ -40,3 +40,8 @@ fetch('/api/users/1');
 ```
 
 During development SvelteKit will proxy this to the backend, and during production ASP.NET will handle this by itself.
+
+Websockets are also supported, although they require a bit more configuration since they don't support relative paths:
+```js
+const ws = new WebSocket((location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/api/ws/status");
+```
