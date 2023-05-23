@@ -38,5 +38,5 @@ During development SvelteKit will proxy this to the backend, and during producti
 
 Websockets are supported as well:
 ```js
-const ws = new WebSocket('/api/websockets/notifications');
+const ws = new WebSocket('ws://' + window.location.host + '/api/websockets/notifications');
 ```
