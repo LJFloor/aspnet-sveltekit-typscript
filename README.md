@@ -23,12 +23,7 @@ http://localhost:5173/api/users/1 => http://localhost:5153/api/users/1
 ```
 
 ## Deployment
-Build the SvelteKit app. It is already configured to build to an SPA:
-```shell
-npm run build
-```
-
-Copy the contents of the `build` folder to the `wwwroot` folder. Then start the ASP.NET app.
+Build the ASP.NET app in Release mode. Then start the ASP.NET app.
 
 ASP.NET is configured to serve the SvelteKit app to requests that do NOT start with `/api`.
 
