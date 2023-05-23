@@ -35,3 +35,8 @@ fetch('/api/users/1');
 ```
 
 During development SvelteKit will proxy this to the backend, and during production ASP.NET will handle this by itself.
+
+Websockets are supported as well:
+```js
+const ws = new WebSocket('/api/websockets/notifications');
+```
