@@ -7,4 +7,17 @@
     <RootNamespace>aspnet_svelte_spa</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+  
+  <Target Condition="'$(Configuration)' != 'Debug'" Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="npm install" />
+    <Exec Command="npm run build" />
+
+    <ItemGroup>
+      <SvelteKitBuild Include="build/**/*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(SvelteKitBuild)" DestinationFolder="$(Outdir)/wwwroot/%(RecursiveDir)" />
+  </Target>
 </Project>
