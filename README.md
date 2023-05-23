@@ -23,7 +23,10 @@ http://localhost:5173/api/users/1 => http://localhost:5153/api/users/1
 ```
 
 ## Deployment
-Build the ASP.NET app in Release mode. Then start the ASP.NET app.
+Run the ASP.NET app in Release mode. 
+```shell
+dotnet run --configuration Release
+```
 
 ASP.NET is configured to serve the SvelteKit app to requests that do NOT start with `/api`.
 
@@ -35,8 +38,3 @@ fetch('/api/users/1');
 ```
 
 During development SvelteKit will proxy this to the backend, and during production ASP.NET will handle this by itself.
-
-Websockets are supported as well:
-```js
-const ws = new WebSocket('ws://' + window.location.host + '/api/websockets/notifications');
-```
