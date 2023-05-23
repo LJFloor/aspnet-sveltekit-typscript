@@ -28,6 +28,8 @@ Run the ASP.NET app in Release mode.
 dotnet run --configuration Release
 ```
 
+This will automatically update the node modules and build SvelteKit.
+
 ASP.NET is configured to serve the SvelteKit app to requests that do NOT start with `/api`.
 
 ## How does it work?
