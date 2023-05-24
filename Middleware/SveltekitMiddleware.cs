@@ -32,6 +32,6 @@ public static class SvelteKitMiddlewareExtensions
     public static IApplicationBuilder UseSvelteKit(this WebApplication app)
     {
         app.UseStaticFiles();
-        return app.UseMiddleware<SvelteKitMiddleware>(app.Environment.WebRootPath);
+        return app.UseMiddleware<SvelteKitMiddleware>(Path.Combine(app.Environment.ContentRootPath, "wwwroot"));
     }
 }
