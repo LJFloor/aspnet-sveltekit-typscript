@@ -32,7 +32,7 @@ This will automatically update the node modules and build SvelteKit.
 
 ASP.NET is configured to serve the SvelteKit app to requests that do NOT start with `/api`.
 
-# Prerendering
+## Prerendering
 Prerendering has a noticable performance advantage. Browsers tend to flicker less on the initial page
 request. You can enable prerendering in `.src/routes/+layout.js`. 
 
