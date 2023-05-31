@@ -13,12 +13,29 @@ public class SvelteKitMiddleware
 
     public async Task InvokeAsync(HttpContext context)
     {
+        if (context.Request.Path.StartsWithSegments("/api")) {
+            return;
+        }
+
+        context.Response.ContentType = "text/html";
+
+        // When using prerendering
+        var requestPath = context.Request.Path.Value.TrimStart('/');
+        var filePath = Path.Combine(_webRootPath, $"{requestPath}.html");
+        if (File.Exists(filePath))
+        {
+            await context.Response.SendFileAsync(filePath);
+            return;
+        }
+
+        // When SPA
         await _next(context);
-        if (!context.Request.Path.StartsWithSegments("/api") && context.Response.StatusCode == 404)
+        if (context.Response.StatusCode == 404)
         {
             context.Response.StatusCode = 200;
             await context.Response.SendFileAsync(Path.Combine(_webRootPath, "200.html"));
         }
+    }
     }
 }
 
