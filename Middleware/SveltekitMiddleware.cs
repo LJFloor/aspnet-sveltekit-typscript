@@ -36,7 +36,6 @@ public class SvelteKitMiddleware
             await context.Response.SendFileAsync(Path.Combine(_webRootPath, "200.html"));
         }
     }
-    }
 }
 
 public static class SvelteKitMiddlewareExtensions
