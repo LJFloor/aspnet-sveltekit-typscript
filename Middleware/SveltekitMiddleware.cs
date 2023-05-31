@@ -14,6 +14,7 @@ public class SvelteKitMiddleware
     public async Task InvokeAsync(HttpContext context)
     {
         if (context.Request.Path.StartsWithSegments("/api")) {
+            await _next(context);
             return;
         }
 
