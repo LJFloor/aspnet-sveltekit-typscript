@@ -20,8 +20,8 @@ public class SvelteKitMiddleware
         context.Response.ContentType = "text/html";
 
         // When using prerendering
-        var requestPath = context.Request.Path.Value.TrimStart('/');
-        var filePath = Path.Combine(_webRootPath, $"{requestPath}.html");
+        var requestPath = context.Request.Path.Value.TrimStart('/').Split('?')[0];
+        var filePath = Path.Combine(_webRootPath, $"{(string.IsNullOrEmpty(requestPath) ? "index" : requestPath)}.html");
         if (File.Exists(filePath))
         {
             await context.Response.SendFileAsync(filePath);
