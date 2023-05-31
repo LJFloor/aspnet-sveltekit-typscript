@@ -32,6 +32,13 @@ This will automatically update the node modules and build SvelteKit.
 
 ASP.NET is configured to serve the SvelteKit app to requests that do NOT start with `/api`.
 
+# Prerendering
+Prerendering has a noticable performance advantage. Browsers tend to flicker less on the initial page
+request. You can enable prerendering in `.src/routes/layout.js`. 
+
+One downside is that if you enable prerendering, you will not be able to use slugs on the fronted 
+(e.g. `http://localhost:5173/admin/users/1`)
+
 ## How does it work?
 
 You can use the following code in your SvelteKit app:
